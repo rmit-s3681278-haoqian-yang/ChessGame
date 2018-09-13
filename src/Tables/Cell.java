@@ -19,6 +19,10 @@ public class Cell {
 
 		PieceOnThisCell = p;
 	}
+	
+	public Piece getPiece() {
+		return PieceOnThisCell;
+	}
 
 	public String ToString() {
 		

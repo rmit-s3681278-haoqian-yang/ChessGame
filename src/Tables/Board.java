@@ -10,7 +10,7 @@ import java.awt.event.MouseListener;
 
 public class Board extends JFrame implements MouseListener {
 
-    final private Cell[][] AllCells;
+   final private Cell[][] AllCells;
 
    Players playerLib = new Players();
    Player player1;
@@ -161,11 +161,67 @@ public class Board extends JFrame implements MouseListener {
 	   }
    }
     
-    
-
-   
-
-
+   public void moveRookValid(int fromRow, int fromCol) {
+		// Check upwards.
+		for (int toRow = fromRow - 1; toRow >= fromRow - 2 && toRow >= 0; toRow--) {
+			if (this.AllCells[toRow][fromCol].getPiece() == null) {
+				this.AllCells[toRow][fromCol].setValidCell();
+			}
+		}
+		// Check downwards.
+		for (int toRow = fromRow + 1; toRow <= fromRow + 2 && toRow <= 5; toRow++) {
+			if (this.AllCells[toRow][fromCol].getPiece() == null) {
+				this.AllCells[toRow][fromCol].setValidCell();
+			}
+		}
+		// Check left.
+		for (int toCol = fromCol - 1; toCol >= fromCol - 2 && toCol >= 0; toCol--) {
+			if (this.AllCells[fromRow][toCol].getPiece() == null) {
+				this.AllCells[fromRow][toCol].setValidCell();
+			}
+		}
+		// Check right.
+		for (int toCol = fromCol + 1; toCol <= fromCol + 2 && toCol <= 5; toCol++) {
+			if (this.AllCells[fromRow][toCol].getPiece() == null) {
+				this.AllCells[fromRow][toCol].setValidCell();
+			}
+		}
+	}
+	
+	public void moveBishopValid(int fromRow, int fromCol) {
+		// Check top-left.
+		for (int toRow = fromRow - 1; toRow >= fromRow - 2 && toRow >= 0; toRow--) {
+			for (int toCol = fromCol - 1; toCol >= fromCol - 2 && toCol >= 0; toCol--) {
+				if (this.AllCells[toRow][toCol].getPiece() == null) {
+					this.AllCells[toRow][toCol].setValidCell();
+				}
+			}
+		}
+		// Check top-right.
+		for (int toRow = fromRow - 1; toRow >= fromRow - 2 && toRow >= 0; toRow--) {
+			for (int toCol = fromCol + 1; toCol <= fromCol + 2 && toCol <= 5; toCol++) {
+				if (this.AllCells[toRow][toCol].getPiece() == null) {
+					this.AllCells[toRow][toCol].setValidCell();
+				}
+			}
+		}
+		// Check bottom-left
+		for (int toRow = fromRow + 1; toRow <= fromRow + 2 && toRow <= 5; toRow++) {
+			for (int toCol = fromCol - 1; toCol >= fromCol - 2 && toCol >= 0; toCol--) {
+				if (this.AllCells[toRow][toCol].getPiece() == null) {
+					this.AllCells[toRow][toCol].setValidCell();
+				}
+			}
+		}
+		// Check bottom-right.
+		for (int toRow = fromRow + 1; toRow <= fromRow + 2 && toRow <= 5; toRow++) {
+			for (int toCol = fromCol + 1; toCol <= fromCol + 2 && toCol <= 5; toCol++) {
+				if (this.AllCells[toRow][toCol].getPiece() == null) {
+					this.AllCells[toRow][toCol].setValidCell();
+				}
+			}
+		}
+	}
 
 
     @Override
