@@ -4,29 +4,12 @@ import java.util.ArrayList;
 import Tables.Player;
 
 public class Table {
-<<<<<<< HEAD
-	
-	
-	Board gameBoard = new Board();
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	////////////////////////////////Player Operation Section///////////////////////////////////////////
 
-	
+	Board gameBoard = new Board();
+
+	//////////////////////////////// Player Operation
+	//////////////////////////////// Section///////////////////////////////////////////
+
 	ArrayList<Player> PlayerLib = new ArrayList<>();
 
 	public boolean AddPlayer(Player P) {
@@ -78,23 +61,8 @@ public class Table {
 
 		return k;
 	}
-	
-	
-	////////////////////////////////////////////End of Player Operation Section/////////////////////////////////////////////////////////////
-=======
 
-	Board gameBoard = new Board();
-	HashMap<String, Player> PlayerLib = new HashMap<>();
-
-	public boolean AddPlayer(String name, String pass) {
-		PlayerLib.put(new Player(name, pass), name);
-		return false;
-
-	}
-
-	private boolean SameNameHasExist() {
-
-	}
->>>>>>> 43dc427d6ac0d20342ab009efd431529ddd2c498
+	//////////////////////////////////////////// End of Player Operation
+	//////////////////////////////////////////// Section/////////////////////////////////////////////////////////////
 
 }

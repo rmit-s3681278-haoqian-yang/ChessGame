@@ -36,7 +36,7 @@ public class Knight extends Piece {
     }
 
 	@Override
-	public void ValidCells(Cell[][] C) {
+	public void ValidCells(Cell[][] C, int fromRow, int fromCol) {
 		// TODO Auto-generated method stub
 		
 	}

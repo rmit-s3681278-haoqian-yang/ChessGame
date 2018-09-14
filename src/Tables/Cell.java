@@ -10,7 +10,6 @@ public class Cell {
 	private boolean EmptyCell = true;
 	private boolean Highlighted = false;
 	private Board board;
-	
 
 	public Cell(int x, int y) {
 		ROW = x;
@@ -18,37 +17,30 @@ public class Cell {
 	}
 
 	public void setPieceOnThisCell(Piece p) {
-<<<<<<< HEAD
-if(p!=null) {
-=======
->>>>>>> 43dc427d6ac0d20342ab009efd431529ddd2c498
-		PieceOnThisCell = p;
-		EmptyCell = false;
-}
+
+		if (p != null) {
+			PieceOnThisCell = p;
+			EmptyCell = false;
+		}
 	}
 
 	public Piece getPiece() {
 		return PieceOnThisCell;
 	}
-	
+
 	public void setPieceNull() {
 		PieceOnThisCell = null;
 		EmptyCell = true;
 	}
 
 	public String ToString() {
-<<<<<<< HEAD
-		
 		if (PieceOnThisCell != null) {
 			return PieceOnThisCell.PieceName();
-=======
-		if (PieceOnThisCell == null) {
+		} if (PieceOnThisCell == null) {
 			return " - ";
->>>>>>> 43dc427d6ac0d20342ab009efd431529ddd2c498
+		} else {
+			return " - ";
 		}
-		else {
-			
-		return " - ";}
 	}
 
 	public int getROWofCell() {

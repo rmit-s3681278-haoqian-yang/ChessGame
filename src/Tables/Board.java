@@ -12,20 +12,8 @@ public class Board extends JFrame implements MouseListener {
 
 	final private Cell[][] AllCells;
 
-<<<<<<< HEAD
-
-   Player player1;
-   Player player2;
-   
-   
-   private Piece PickedPiece;
-   
-   boolean isPlayer1turn;
-=======
-	Players playerLib = new Players();
 	Player player1;
 	Player player2;
->>>>>>> 43dc427d6ac0d20342ab009efd431529ddd2c498
 
 	private Piece PickedPiece;
 
@@ -43,26 +31,8 @@ public class Board extends JFrame implements MouseListener {
 		String name2 = "Oho";/////////////////
 		String pass2 = "123123";///////////////
 
-<<<<<<< HEAD
-    public Board() {
-    	
-    	
-    	
-    	String name1 ="aha";/////////////////
-    	String pass1 ="123456";///////////////
-    	String name2 = "Oho";/////////////////
-    	String pass2 = "123123";///////////////
-  
-    	
-    	Player p1 = new Player( name1, pass1);////////////////////
-    	Player p2 = new Player( name2, pass2);/////////////////
-=======
-		playerLib.AddPlayer(name1, pass1);
-		playerLib.AddPlayer(name2, pass2);
->>>>>>> 43dc427d6ac0d20342ab009efd431529ddd2c498
-
-		Player p1 = playerLib.Login(name1, pass1);
-		Player p2 = playerLib.Login(name2, pass2);
+		Player p1 = new Player(name1, pass1);////////////////////
+		Player p2 = new Player(name2, pass2);/////////////////
 
 		JFrame mainWindow = new JFrame("Game Demo");
 		mainWindow.setSize(800, 600);
@@ -88,49 +58,9 @@ public class Board extends JFrame implements MouseListener {
 					squares[i][j].setBackground(Color.GRAY);
 				}
 
-<<<<<<< HEAD
-        Container MainPad = new Container();
-        MainPad= getContentPane();
-        MainPad.setLayout(new BorderLayout());
-
-        Container BoardPad = new Container();
-        BoardPad.setLayout(new GridLayout(6,6));
-
-        JPanel[][] squares = new JPanel[6][6];
-        for (int i = 0; i < 6; i++) {
-            for (int j = 0; j < 6; j++) {
-                squares[i][j] = new JPanel();
-                if ((i + j) % 2 == 0) {
-                    squares[i][j].setBackground(Color.BLACK);
-                } else {
-                    squares[i][j].setBackground(Color.GRAY);
-                }
-
-                BoardPad.add(squares[i][j]);
-              //  squares[i][j].addActionListener(buttonHandler);/////////////////////////////////////////////////////////
-            }
-
-        }
-
-        BoardPad.setSize(600, 600);
-      // BoardPad.setResizable(false);
-       // MainPad.setComponentZOrder();
-        setVisible(true);
-
-        MainPad.add(BoardPad);
-
-
-
-        Alliance A1 = new Alliance(p1, Color.BLACK,false,this);
-        Alliance A2 = new Alliance(p2, Color.WHITE,true,this);
-
-        Piece[] PiecesOfA1 = A1.getPieces();
-        Piece[] PiecesOfA2 = A2.getPieces();
-=======
 				BoardPad.add(squares[i][j]);
 				// squares[i][j].addActionListener(buttonHandler);/////////////////////////////////////////////////////////
 			}
->>>>>>> 43dc427d6ac0d20342ab009efd431529ddd2c498
 
 		}
 
@@ -139,42 +69,28 @@ public class Board extends JFrame implements MouseListener {
 		// MainPad.setComponentZOrder();
 		setVisible(true);
 
-<<<<<<< HEAD
-        for (int i = 0; i < 6; i++) {
-            for (int j = 0; j < 6; j++) {
-                AllCells[i][j] = new Cell(i, j);
-            }
-        }
-//
-//
-//        for (int j = 0; j < 6; j++) {
-//            AllCells[0][j].setPieceOnThisCell(PiecesOfA1[j]);
-//            AllCells[5][j].setPieceOnThisCell(PiecesOfA2[j]);
-//
-//        }
-=======
 		MainPad.add(BoardPad);
 
-		Alliance A1 = new Alliance(p1, Color.BLACK, false);
-		Alliance A2 = new Alliance(p2, Color.WHITE, true);
+		Alliance A1 = new Alliance(p1, Color.BLACK, false, this);
+		Alliance A2 = new Alliance(p2, Color.WHITE, true, this);
 
 		Piece[] PiecesOfA1 = A1.getPieces();
 		Piece[] PiecesOfA2 = A2.getPieces();
 
 		AllCells = new Cell[6][6];
->>>>>>> 43dc427d6ac0d20342ab009efd431529ddd2c498
 
 		for (int i = 0; i < 6; i++) {
 			for (int j = 0; j < 6; j++) {
 				AllCells[i][j] = new Cell(i, j);
 			}
 		}
-
-		for (int j = 0; j < 6; j++) {
-			AllCells[0][j].setPieceOnThisCell(PiecesOfA1[j]);
-			AllCells[5][j].setPieceOnThisCell(PiecesOfA2[j]);
-
-		}
+		//
+		//
+		// for (int j = 0; j < 6; j++) {
+		// AllCells[0][j].setPieceOnThisCell(PiecesOfA1[j]);
+		// AllCells[5][j].setPieceOnThisCell(PiecesOfA2[j]);
+		//
+		// }
 
 		ShowBoard();
 
@@ -182,39 +98,6 @@ public class Board extends JFrame implements MouseListener {
 
 	public void paint(Graphics g) {
 
-<<<<<<< HEAD
-    
-    public void MovePieceTo(Cell c,Piece p) {
-    	
-    	
-    	int row1 = p.getROW();
-    	int col1 = p.getCOL();
-    	
-    	AllCells[row1][col1].setPieceNull();
-    	
-    	
-        	int row2 = c.getROWofCell();
-        	
-        	int col2 = c.getCOLofCell();
-        	
-        	AllCells[row2][col2].setPieceOnThisCell(p);
-        	
-    	
-    	
-    }
-    
-    
-    
-public void putPieceTo(Cell c,Piece p) {
-    	
-	int row = c.getROWofCell();
-	
-	int col = c.getCOLofCell();
-	
-	AllCells[row][col].setPieceOnThisCell(p);
-    
-}
-=======
 		g.fillRect(100, 100, 400, 400);
 		for (int i = 100; i <= 400; i += 100) {
 			for (int j = 100; j <= 400; j += 100) {
@@ -228,34 +111,47 @@ public void putPieceTo(Cell c,Piece p) {
 			}
 		}
 	}
->>>>>>> 43dc427d6ac0d20342ab009efd431529ddd2c498
+
+	public void MovePieceTo(Cell c, Piece p) {
+
+		int row1 = p.getROW();
+		int col1 = p.getCOL();
+
+		AllCells[row1][col1].setPieceNull();
+
+		int row2 = c.getROWofCell();
+
+		int col2 = c.getCOLofCell();
+
+		AllCells[row2][col2].setPieceOnThisCell(p);
+
+	}
+
+	public void putPieceTo(Cell c, Piece p) {
+
+		int row = c.getROWofCell();
+
+		int col = c.getCOLofCell();
+
+		AllCells[row][col].setPieceOnThisCell(p);
+
+	}
 
 	public void ShowBoard() {
 
 		for (int i = 0; i < AllCells.length; i++) {
 
 			for (int j = 0; j < AllCells[i].length; j++) {
-				System.out.print(
-						AllCells[i][j].ToString() + AllCells[i][j].getXofCell() + ";" + AllCells[i][j].getYofCell());/////////////////////////////////////////////////////
+				System.out.print(AllCells[i][j].ToString());////////////// +AllCells[i][j].getROWofCell()+";"+AllCells[i][j].getCOLofCell()///////////////////////
 			}
 			System.out.println();
 		}
-
-<<<<<<< HEAD
-            for(int j = 0; j<AllCells[i].length;j++){
-                System.out.print(AllCells[i][j].ToString());//////////////+AllCells[i][j].getROWofCell()+";"+AllCells[i][j].getCOLofCell()///////////////////////
-            }
-        System.out.println();
-        }
-System.out.println();
-    }
-=======
+		System.out.println();
 	}
 
 	public Cell[][] getAllCells() {
 		return AllCells;
 	}
->>>>>>> 43dc427d6ac0d20342ab009efd431529ddd2c498
 
 	public void resetAllValidBooleans() {
 		for (int i = 0; i < AllCells.length; i++) {
@@ -265,64 +161,33 @@ System.out.println();
 		}
 	}
 
-<<<<<<< HEAD
-   public void resetAllValidBooleans() {
-	   for(int i = 0;i<AllCells.length;i++) {
-		   for(int j = 0;j<AllCells[i].length;j++) {
-			   AllCells[i][j].setInvalidCell();
-		   }
-	   }
-   }
-   
-   
-   public Cell getCell(int row, int col) {
-	   return AllCells[row][col];
-   }
-   
-   
-    
-   public void moveRookValid(int fromRow, int fromCol) {
-=======
+	public Cell getCell(int row, int col) {
+		return AllCells[row][col];
+	}
+
 	public void moveRookValid(int fromRow, int fromCol) {
->>>>>>> 43dc427d6ac0d20342ab009efd431529ddd2c498
 		// Check upwards.
 		for (int toRow = fromRow - 1; toRow >= fromRow - 2 && toRow >= 0; toRow--) {
 			if (this.AllCells[toRow][fromCol].getPiece() == null) {
 				this.AllCells[toRow][fromCol].setValidCell();
-			} else {
-				if (this.AllCells[toRow][fromCol].getPiece().getColor().equals(this.AllCells[fromRow][fromCol].getPiece().getColor())){
-					this.AllCells[toRow][fromCol].setValidCell();
-				}
 			}
 		}
 		// Check downwards.
 		for (int toRow = fromRow + 1; toRow <= fromRow + 2 && toRow <= 5; toRow++) {
 			if (this.AllCells[toRow][fromCol].getPiece() == null) {
 				this.AllCells[toRow][fromCol].setValidCell();
-			} else {
-				if (this.AllCells[toRow][fromCol].getPiece().getColor().equals(this.AllCells[fromRow][fromCol].getPiece().getColor())){
-					this.AllCells[toRow][fromCol].setValidCell();
-				}
 			}
 		}
 		// Check left.
 		for (int toCol = fromCol - 1; toCol >= fromCol - 2 && toCol >= 0; toCol--) {
 			if (this.AllCells[fromRow][toCol].getPiece() == null) {
 				this.AllCells[fromRow][toCol].setValidCell();
-			} else {
-				if (this.AllCells[fromRow][toCol].getPiece().getColor().equals(this.AllCells[fromRow][fromCol].getPiece().getColor())){
-					this.AllCells[fromRow][toCol].setValidCell();
-				}
 			}
 		}
 		// Check right.
 		for (int toCol = fromCol + 1; toCol <= fromCol + 2 && toCol <= 5; toCol++) {
 			if (this.AllCells[fromRow][toCol].getPiece() == null) {
 				this.AllCells[fromRow][toCol].setValidCell();
-			} else {
-				if (this.AllCells[fromRow][toCol].getPiece().getColor().equals(this.AllCells[fromRow][fromCol].getPiece().getColor())){
-					this.AllCells[fromRow][toCol].setValidCell();
-				}
 			}
 		}
 	}
@@ -333,10 +198,6 @@ System.out.println();
 			for (int toCol = fromCol - 1; toCol >= fromCol - 2 && toCol >= 0; toCol--) {
 				if (this.AllCells[toRow][toCol].getPiece() == null) {
 					this.AllCells[toRow][toCol].setValidCell();
-				} else {
-					if (this.AllCells[toRow][toCol].getPiece().getColor().equals(this.AllCells[fromRow][fromCol].getPiece().getColor())){
-						this.AllCells[toRow][toCol].setValidCell();
-					}
 				}
 			}
 		}
@@ -345,10 +206,6 @@ System.out.println();
 			for (int toCol = fromCol + 1; toCol <= fromCol + 2 && toCol <= 5; toCol++) {
 				if (this.AllCells[toRow][toCol].getPiece() == null) {
 					this.AllCells[toRow][toCol].setValidCell();
-				} else {
-					if (this.AllCells[toRow][toCol].getPiece().getColor().equals(this.AllCells[fromRow][fromCol].getPiece().getColor())){
-						this.AllCells[toRow][toCol].setValidCell();
-					}
 				}
 			}
 		}
@@ -357,10 +214,6 @@ System.out.println();
 			for (int toCol = fromCol - 1; toCol >= fromCol - 2 && toCol >= 0; toCol--) {
 				if (this.AllCells[toRow][toCol].getPiece() == null) {
 					this.AllCells[toRow][toCol].setValidCell();
-				} else {
-					if (this.AllCells[toRow][toCol].getPiece().getColor().equals(this.AllCells[fromRow][fromCol].getPiece().getColor())){
-						this.AllCells[toRow][toCol].setValidCell();
-					}
 				}
 			}
 		}
@@ -369,10 +222,6 @@ System.out.println();
 			for (int toCol = fromCol + 1; toCol <= fromCol + 2 && toCol <= 5; toCol++) {
 				if (this.AllCells[toRow][toCol].getPiece() == null) {
 					this.AllCells[toRow][toCol].setValidCell();
-				} else {
-					if (this.AllCells[toRow][toCol].getPiece().getColor().equals(this.AllCells[fromRow][fromCol].getPiece().getColor())){
-						this.AllCells[toRow][toCol].setValidCell();
-					}
 				}
 			}
 		}

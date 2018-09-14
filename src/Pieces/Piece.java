@@ -8,54 +8,50 @@ import Tables.Cell;
 
 public abstract class Piece {
 
-    protected int ROW;
-    protected int COL;
-    
-    protected Board board;
-    
+	protected int ROW;
+	protected int COL;
 
-    protected String NameOfPiece;
+	protected Board board;
 
-    protected ArrayList<Cell> ValidCells = new ArrayList<>();
+	protected String NameOfPiece;
 
-    protected Cell OnWhichCell;
+	protected ArrayList<Cell> ValidCells = new ArrayList<>();
 
-    private Color color;
+	protected Cell OnWhichCell;
 
-    public Piece(Board board) {
-   this.board = board;
-    }
+	private Color color;
 
-<<<<<<< HEAD
-    public void setROW(int i) {
-    	ROW = i;
-    }
-    
-    public void setCOL(int i) {
-    	COL = i;
-    }
-    
-    public int getROW() {
-    	return ROW;
-    }
-    
-    public int getCOL() {
-    	return COL;
-    }
-    
-=======
-    public Color getColor() {
-    	return color;
-    }
->>>>>>> 43dc427d6ac0d20342ab009efd431529ddd2c498
+	public Piece(Board board) {
+		this.board = board;
+	}
 
-    public abstract void Move(int x, int y);
+	public void setROW(int i) {
+		ROW = i;
+	}
 
-    public abstract String PieceName();
+	public void setCOL(int i) {
+		COL = i;
+	}
 
-    public abstract void NameUpper();
-    
-    public abstract void ValidCells(Cell[][] C);
+	public int getROW() {
+		return ROW;
+	}
 
-	public abstract boolean  CanMove(Cell cell);
+	public int getCOL() {
+		return COL;
+	}
+
+	public Color getColor() {
+		return color;
+	}
+
+	public abstract void Move(int x, int y);
+
+	public abstract String PieceName();
+
+	public abstract void NameUpper();
+
+	public abstract void ValidCells(Cell[][] C, int fromRow, int fromCol);
+
+	public abstract boolean CanMove(Cell cell);
 }
