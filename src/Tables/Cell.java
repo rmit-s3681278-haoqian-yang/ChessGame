@@ -18,12 +18,15 @@ public class Cell {
 	}
 
 	public void setPieceOnThisCell(Piece p) {
+<<<<<<< HEAD
 if(p!=null) {
+=======
+>>>>>>> 43dc427d6ac0d20342ab009efd431529ddd2c498
 		PieceOnThisCell = p;
 		EmptyCell = false;
 }
 	}
-	
+
 	public Piece getPiece() {
 		return PieceOnThisCell;
 	}
@@ -34,9 +37,14 @@ if(p!=null) {
 	}
 
 	public String ToString() {
+<<<<<<< HEAD
 		
 		if (PieceOnThisCell != null) {
 			return PieceOnThisCell.PieceName();
+=======
+		if (PieceOnThisCell == null) {
+			return " - ";
+>>>>>>> 43dc427d6ac0d20342ab009efd431529ddd2c498
 		}
 		else {
 			

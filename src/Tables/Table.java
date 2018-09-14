@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import Tables.Player;
 
 public class Table {
+<<<<<<< HEAD
 	
 	
 	Board gameBoard = new Board();
@@ -80,5 +81,20 @@ public class Table {
 	
 	
 	////////////////////////////////////////////End of Player Operation Section/////////////////////////////////////////////////////////////
+=======
+
+	Board gameBoard = new Board();
+	HashMap<String, Player> PlayerLib = new HashMap<>();
+
+	public boolean AddPlayer(String name, String pass) {
+		PlayerLib.put(new Player(name, pass), name);
+		return false;
+
+	}
+
+	private boolean SameNameHasExist() {
+
+	}
+>>>>>>> 43dc427d6ac0d20342ab009efd431529ddd2c498
 
 }

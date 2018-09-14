@@ -26,6 +26,7 @@ public abstract class Piece {
    this.board = board;
     }
 
+<<<<<<< HEAD
     public void setROW(int i) {
     	ROW = i;
     }
@@ -42,6 +43,11 @@ public abstract class Piece {
     	return COL;
     }
     
+=======
+    public Color getColor() {
+    	return color;
+    }
+>>>>>>> 43dc427d6ac0d20342ab009efd431529ddd2c498
 
     public abstract void Move(int x, int y);
 
