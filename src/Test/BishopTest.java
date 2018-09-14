@@ -34,7 +34,7 @@ class BishopTest {
 		assertEquals(move2, false);
 		assertEquals(Bl.getCell(2,2).isEmpty(),false);
 
-//		Bl.ShowBoard();
+		Bl.ShowBoard();
 //		
 //		Bl.MovePieceTo(Bl.getCell(5, 4), bp1);
 //		Bl.ShowBoard();
