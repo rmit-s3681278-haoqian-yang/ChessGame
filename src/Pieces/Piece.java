@@ -23,6 +23,9 @@ public abstract class Piece {
         this.color = c;
     }
 
+    public Color getColor() {
+    	return color;
+    }
 
     public abstract void Move(int x, int y);
 

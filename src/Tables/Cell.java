@@ -16,16 +16,14 @@ public class Cell {
 	}
 
 	public void setPieceOnThisCell(Piece p) {
-
 		PieceOnThisCell = p;
 	}
-	
+
 	public Piece getPiece() {
 		return PieceOnThisCell;
 	}
 
 	public String ToString() {
-		
 		if (PieceOnThisCell == null) {
 			return " - ";
 		}

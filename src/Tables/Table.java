@@ -6,25 +6,17 @@ import Tables.Players.Player;
 
 public class Table {
 
-	
 	Board gameBoard = new Board();
-	HashMap<Player,String> PlayerLib = new HashMap<>();
-	
-	
-	
-	
+	HashMap<String, Player> PlayerLib = new HashMap<>();
+
 	public boolean AddPlayer(String name, String pass) {
-		PlayerLib.put(new Player(name,pass),name);
+		PlayerLib.put(new Player(name, pass), name);
 		return false;
-		
+
 	}
-	
+
 	private boolean SameNameHasExist() {
-		
-		
-		
+
 	}
-	
-	
-	
+
 }
