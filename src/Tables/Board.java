@@ -96,10 +96,6 @@ public class Board extends JFrame implements MouseListener {
 
 	}
 	
-	public Cell[][] getCell() {
-		return AllCells;
-	}
-
 	public void paint(Graphics g) {
 
 		g.fillRect(100, 100, 400, 400);

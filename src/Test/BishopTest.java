@@ -27,14 +27,14 @@ class BishopTest {
 		
 		Bl.ShowBoard();
 		
-		bp1.ValidCells(Bl.getCell(), 2, 2);;
+		bp1.ValidCells(Bl, 2, 2);
 		bp1.CanMove(Bl.getCell(3, 2));
 		
 		// bp1.MoveTo(c1);
 		Bl.MovePieceTo(Bl.getCell(4, 4), bp1);
 
-		assertEquals(move1, false);
-		assertEquals(move2, false);
+//		assertEquals(move1, false);
+//		assertEquals(move2, false);
 		assertEquals(Bl.getCell(2,2).isEmpty(),false);
 
 		Bl.ShowBoard();

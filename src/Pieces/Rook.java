@@ -47,44 +47,60 @@ public class Rook extends Piece {
 	}
 
 	@Override
-	public void ValidCells(Cell[][] C, int fromRow, int fromCol) {
+	public void ValidCells(Board B, int fromRow, int fromCol) {
 		// Check upwards.
 		for (int toRow = fromRow - 1; toRow >= fromRow - 2 && toRow >= 0; toRow--) {
-			if (C[toRow][fromCol].getPiece() == null) {
-				C[toRow][fromCol].setValidCell();
+			if (B.getCell(toRow, fromCol).getPiece() == null) {
+				B.getCell(toRow, fromCol).setValidCell();
 			} else {
-				if (C[toRow][fromCol].getPiece().getColor().equals(C[fromRow][fromCol].getPiece().getColor())) {
-					C[toRow][fromCol].setValidCell();
+				if (!B.getCell(toRow, fromCol).getPiece().getColor()
+						.equals(B.getCell(fromRow, fromCol).getPiece().getColor())) {
+					B.getCell(toRow, fromCol).setValidCell();
+					break;
+				} else {
+					break;
 				}
 			}
 		}
 		// Check downwards.
 		for (int toRow = fromRow + 1; toRow <= fromRow + 2 && toRow <= 5; toRow++) {
-			if (C[toRow][fromCol].getPiece() == null) {
-				C[toRow][fromCol].setValidCell();
+			if (B.getCell(toRow, fromCol).getPiece() == null) {
+				B.getCell(toRow, fromCol).setValidCell();
 			} else {
-				if (C[toRow][fromCol].getPiece().getColor().equals(C[fromRow][fromCol].getPiece().getColor())) {
-					C[toRow][fromCol].setValidCell();
+				if (!B.getCell(toRow, fromCol).getPiece().getColor()
+						.equals(B.getCell(fromRow, fromCol).getPiece().getColor())) {
+					B.getCell(toRow, fromCol).setValidCell();
+					break;
+				} else {
+					break;
 				}
 			}
 		}
 		// Check left.
 		for (int toCol = fromCol - 1; toCol >= fromCol - 2 && toCol >= 0; toCol--) {
-			if (C[fromRow][toCol].getPiece() == null) {
-				C[fromRow][toCol].setValidCell();
+			if (B.getCell(fromRow, toCol).getPiece() == null) {
+				B.getCell(fromRow, toCol).setValidCell();
 			} else {
-				if (C[fromRow][toCol].getPiece().getColor().equals(C[fromRow][fromCol].getPiece().getColor())) {
-					C[fromRow][toCol].setValidCell();
+				if (!B.getCell(fromRow, toCol).getPiece().getColor()
+						.equals(B.getCell(fromRow, fromCol).getPiece().getColor())) {
+					B.getCell(fromRow, toCol).setValidCell();
+					break;
+				} else {
+					break;
 				}
 			}
 		}
 		// Check right.
 		for (int toCol = fromCol + 1; toCol <= fromCol + 2 && toCol <= 5; toCol++) {
-			if (C[fromRow][toCol].getPiece() == null) {
-				C[fromRow][toCol].setValidCell();
+			if (B.getCell(fromRow, toCol).getPiece() == null) {
+				B.getCell(fromRow, toCol).setValidCell();
 			} else {
-				if (C[fromRow][toCol].getPiece().getColor().equals(C[fromRow][fromCol].getPiece().getColor())) {
-					C[fromRow][toCol].setValidCell();
+				if (!B.getCell(fromRow, toCol).getPiece().getColor()
+						.equals(B.getCell(fromRow, fromCol).getPiece().getColor())) {
+					B.getCell(fromRow, toCol).setValidCell();
+					break;
+				} else {
+					break;
 				}
 			}
 		}

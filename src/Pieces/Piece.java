@@ -51,7 +51,7 @@ public abstract class Piece {
 
 	public abstract void NameUpper();
 
-	public abstract void ValidCells(Cell[][] C, int fromRow, int fromCol);
+	public abstract void ValidCells(Board B, int fromRow, int fromCol);
 
 	public abstract boolean CanMove(Cell cell);
 }

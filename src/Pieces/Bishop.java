@@ -153,52 +153,64 @@ public class Bishop extends Piece {
 	}
 
 	@Override
-	public void ValidCells(Cell[][] C, int fromRow, int fromCol) {
+	public void ValidCells(Board B, int fromRow, int fromCol) {
 		// Check top-left.
-		for (int toRow = fromRow - 1; toRow >= fromRow - 2 && toRow >= 0; toRow--) {
-			for (int toCol = fromCol - 1; toCol >= fromCol - 2 && toCol >= 0; toCol--) {
-				if (C[toRow][toCol].getPiece() == null) {
-					C[toRow][toCol].setValidCell();
+		for (int i = 1; i <= 2; i++) {
+			int toRow = fromRow - i, toCol = fromCol - i;
+			if (toRow >= 0 && toCol >= 0) {
+				if (B.getCell(toRow, toCol).getPiece() == null) {
+					B.getCell(toRow, toCol).setValidCell();
+				} else if (!B.getCell(toRow, toCol).getPiece().getColor()
+						.equals(B.getCell(fromRow, fromCol).getPiece().getColor())) {
+					B.getCell(toRow, toCol).setValidCell();
+					break;
 				} else {
-					if (C[toRow][toCol].getPiece().getColor().equals(C[fromRow][fromCol].getPiece().getColor())) {
-						C[toRow][toCol].setValidCell();
-					}
+					break;
 				}
 			}
 		}
 		// Check top-right.
-		for (int toRow = fromRow - 1; toRow >= fromRow - 2 && toRow >= 0; toRow--) {
-			for (int toCol = fromCol + 1; toCol <= fromCol + 2 && toCol <= 5; toCol++) {
-				if (C[toRow][toCol].getPiece() == null) {
-					C[toRow][toCol].setValidCell();
+		for (int i = 1; i <= 2; i++) {
+			int toRow = fromRow - i, toCol = fromCol + i;
+			if (toRow >= 0 && toCol <= 5) {
+				if (B.getCell(toRow, toCol).getPiece() == null) {
+					B.getCell(toRow, toCol).setValidCell();
+				} else if (!B.getCell(toRow, toCol).getPiece().getColor()
+						.equals(B.getCell(fromRow, fromCol).getPiece().getColor())) {
+					B.getCell(toRow, toCol).setValidCell();
+					break;
 				} else {
-					if (C[toRow][toCol].getPiece().getColor().equals(C[fromRow][fromCol].getPiece().getColor())) {
-						C[toRow][toCol].setValidCell();
-					}
+					break;
 				}
 			}
 		}
 		// Check bottom-left
-		for (int toRow = fromRow + 1; toRow <= fromRow + 2 && toRow <= 5; toRow++) {
-			for (int toCol = fromCol - 1; toCol >= fromCol - 2 && toCol >= 0; toCol--) {
-				if (C[toRow][toCol].getPiece() == null) {
-					C[toRow][toCol].setValidCell();
+		for (int i = 1; i <= 2; i++) {
+			int toRow = fromRow + i, toCol = fromCol - i;
+			if (toRow <= 5 && toCol >= 0) {
+				if (B.getCell(toRow, toCol).getPiece() == null) {
+					B.getCell(toRow, toCol).setValidCell();
+				} else if (!B.getCell(toRow, toCol).getPiece().getColor()
+						.equals(B.getCell(fromRow, fromCol).getPiece().getColor())) {
+					B.getCell(toRow, toCol).setValidCell();
+					break;
 				} else {
-					if (C[toRow][toCol].getPiece().getColor().equals(C[fromRow][fromCol].getPiece().getColor())) {
-						C[toRow][toCol].setValidCell();
-					}
+					break;
 				}
 			}
 		}
 		// Check bottom-right.
-		for (int toRow = fromRow + 1; toRow <= fromRow + 2 && toRow <= 5; toRow++) {
-			for (int toCol = fromCol + 1; toCol <= fromCol + 2 && toCol <= 5; toCol++) {
-				if (C[toRow][toCol].getPiece() == null) {
-					C[toRow][toCol].setValidCell();
+		for (int i = 1; i <= 2; i++) {
+			int toRow = fromRow + i, toCol = fromCol + i;
+			if (toRow <= 5 && toCol <= 5) {
+				if (B.getCell(toRow, toCol).getPiece() == null) {
+					B.getCell(toRow, toCol).setValidCell();
+				} else if (!B.getCell(toRow, toCol).getPiece().getColor()
+						.equals(B.getCell(fromRow, fromCol).getPiece().getColor())) {
+					B.getCell(toRow, toCol).setValidCell();
+					break;
 				} else {
-					if (C[toRow][toCol].getPiece().getColor().equals(C[fromRow][fromCol].getPiece().getColor())) {
-						C[toRow][toCol].setValidCell();
-					}
+					break;
 				}
 			}
 		}
