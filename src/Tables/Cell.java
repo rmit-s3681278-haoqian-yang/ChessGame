@@ -4,20 +4,21 @@ import Pieces.Piece;
 
 public class Cell {
 
-	final private int ROW;// the x axis
-	final private int COL;// the y axis
+	private int ROW;
+	private int COL;
 	private Piece PieceOnThisCell;
-	private boolean EmptyCell = true;
-	private boolean Highlighted = false;
-	private Board board;
+	private boolean EmptyCell;
+	private boolean Highlighted;
 
-	public Cell(int x, int y) {
-		ROW = x;
-		COL = y;
+	public Cell(int row, int col) {
+		this.ROW = row;
+		this.COL = col;
+		this.PieceOnThisCell = null;
+		this.EmptyCell = true;
+		this.Highlighted = false;
 	}
 
 	public void setPieceOnThisCell(Piece p) {
-
 		if (p != null) {
 			PieceOnThisCell = p;
 			EmptyCell = false;

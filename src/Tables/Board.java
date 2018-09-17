@@ -10,7 +10,7 @@ import java.awt.event.MouseListener;
 
 public class Board extends JFrame implements MouseListener {
 
-	final private Cell[][] AllCells;
+	private Cell[][] AllCells;
 
 	Player player1;
 	Player player2;
@@ -94,6 +94,10 @@ public class Board extends JFrame implements MouseListener {
 
 		ShowBoard();
 
+	}
+	
+	public Cell[][] getCell() {
+		return AllCells;
 	}
 
 	public void paint(Graphics g) {

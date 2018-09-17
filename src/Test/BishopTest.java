@@ -24,9 +24,12 @@ class BishopTest {
 	void test() {
 		
 		Bl.putPieceTo(temp, bp1);
+		
 		Bl.ShowBoard();
-		boolean move1 = bp1.CanMove(Bl.getCell(4, 4));
-		boolean move2 = bp1.CanMove(Bl.getCell(3, 2));
+		
+		bp1.ValidCells(Bl.getCell(), 2, 2);;
+		bp1.CanMove(Bl.getCell(3, 2));
+		
 		// bp1.MoveTo(c1);
 		Bl.MovePieceTo(Bl.getCell(4, 4), bp1);
 
