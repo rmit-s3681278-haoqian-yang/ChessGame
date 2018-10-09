@@ -160,8 +160,7 @@ public class Bishop extends Piece {
 			if (toRow >= 0 && toCol >= 0) {
 				if (B.getCell(toRow, toCol).getPiece() == null) {
 					B.getCell(toRow, toCol).setValidCell();
-				} else if (!B.getCell(toRow, toCol).getPiece().getColor()
-						.equals(B.getCell(fromRow, fromCol).getPiece().getColor())) {
+				} else if (B.getCell(toRow, toCol).getPiece().isWhite() != B.getCell(fromRow, fromCol).getPiece().isWhite()) {
 					B.getCell(toRow, toCol).setValidCell();
 					break;
 				} else {
@@ -175,8 +174,7 @@ public class Bishop extends Piece {
 			if (toRow >= 0 && toCol <= 5) {
 				if (B.getCell(toRow, toCol).getPiece() == null) {
 					B.getCell(toRow, toCol).setValidCell();
-				} else if (!B.getCell(toRow, toCol).getPiece().getColor()
-						.equals(B.getCell(fromRow, fromCol).getPiece().getColor())) {
+				} else if (B.getCell(toRow, toCol).getPiece().isWhite() != B.getCell(fromRow, fromCol).getPiece().isWhite()) {
 					B.getCell(toRow, toCol).setValidCell();
 					break;
 				} else {
@@ -190,8 +188,7 @@ public class Bishop extends Piece {
 			if (toRow <= 5 && toCol >= 0) {
 				if (B.getCell(toRow, toCol).getPiece() == null) {
 					B.getCell(toRow, toCol).setValidCell();
-				} else if (!B.getCell(toRow, toCol).getPiece().getColor()
-						.equals(B.getCell(fromRow, fromCol).getPiece().getColor())) {
+				} else if (B.getCell(toRow, toCol).getPiece().isWhite() != B.getCell(fromRow, fromCol).getPiece().isWhite()) {
 					B.getCell(toRow, toCol).setValidCell();
 					break;
 				} else {
@@ -205,8 +202,7 @@ public class Bishop extends Piece {
 			if (toRow <= 5 && toCol <= 5) {
 				if (B.getCell(toRow, toCol).getPiece() == null) {
 					B.getCell(toRow, toCol).setValidCell();
-				} else if (!B.getCell(toRow, toCol).getPiece().getColor()
-						.equals(B.getCell(fromRow, fromCol).getPiece().getColor())) {
+				} else if (B.getCell(toRow, toCol).getPiece().isWhite() != B.getCell(fromRow, fromCol).getPiece().isWhite()) {
 					B.getCell(toRow, toCol).setValidCell();
 					break;
 				} else {

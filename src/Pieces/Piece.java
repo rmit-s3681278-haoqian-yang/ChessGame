@@ -19,7 +19,7 @@ public abstract class Piece {
 
 	protected Cell OnWhichCell;
 
-	private Color color;
+	private boolean isWhite;
 
 	public Piece(Board board) {
 		this.board = board;
@@ -41,10 +41,10 @@ public abstract class Piece {
 		return COL;
 	}
 
-	public Color getColor() {
-		return color;
+	public boolean isWhite() {
+		return isWhite;
 	}
-
+	
 	public abstract void Move(int x, int y);
 
 	public abstract String PieceName();

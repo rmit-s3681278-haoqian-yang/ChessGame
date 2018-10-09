@@ -15,7 +15,7 @@ public class Table {
 	public boolean AddPlayer(Player P) {
 		boolean k = false;
 
-		if (!NameHasExisted(P.Name)) {
+		if (!NameHasExisted(P.getName())) {
 			PlayerLib.add(P);
 			k = true;
 		}
@@ -28,9 +28,9 @@ public class Table {
 		temp = null;
 		if (NameHasExisted(name)) {
 			int k = IndexWithThisName(name);
-			if (PlayerLib.get(k).MatchedPassword(password) && PlayerLib.get(k).hasLogin == false) {
+			if (PlayerLib.get(k).MatchedPassword(password) && PlayerLib.get(k).getHasLogin() == false) {
 				temp = PlayerLib.get(k);
-				PlayerLib.get(k).hasLogin = true;
+				PlayerLib.get(k).setHasLogin(true);;
 			}
 		}
 		return temp;

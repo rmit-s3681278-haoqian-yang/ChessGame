@@ -42,8 +42,7 @@ public class Knight extends Piece {
 			if ((toRow >= 0 && toRow <= 5) && (toCol >= 0 && toCol <= 5)) {
 				if (B.getCell(toRow, toCol).getPiece() == null) {
 					B.getCell(toRow, toCol).setValidCell();
-				} else if (!B.getCell(toRow, toCol).getPiece().getColor()
-						.equals(B.getCell(fromRow, fromCol).getPiece().getColor())) {
+				} else if (B.getCell(toRow, toCol).getPiece().isWhite() != B.getCell(fromRow, fromCol).getPiece().isWhite()) {
 					B.getCell(toRow, toCol).setValidCell();
 				} else {
 					continue;

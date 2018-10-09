@@ -53,8 +53,7 @@ public class Rook extends Piece {
 			if (B.getCell(toRow, fromCol).getPiece() == null) {
 				B.getCell(toRow, fromCol).setValidCell();
 			} else {
-				if (!B.getCell(toRow, fromCol).getPiece().getColor()
-						.equals(B.getCell(fromRow, fromCol).getPiece().getColor())) {
+				if (B.getCell(toRow, fromCol).getPiece().isWhite() != B.getCell(fromRow, fromCol).getPiece().isWhite()) {
 					B.getCell(toRow, fromCol).setValidCell();
 					break;
 				} else {
@@ -67,8 +66,7 @@ public class Rook extends Piece {
 			if (B.getCell(toRow, fromCol).getPiece() == null) {
 				B.getCell(toRow, fromCol).setValidCell();
 			} else {
-				if (!B.getCell(toRow, fromCol).getPiece().getColor()
-						.equals(B.getCell(fromRow, fromCol).getPiece().getColor())) {
+				if (B.getCell(toRow, fromCol).getPiece().isWhite() != B.getCell(fromRow, fromCol).getPiece().isWhite()) {
 					B.getCell(toRow, fromCol).setValidCell();
 					break;
 				} else {
@@ -81,8 +79,7 @@ public class Rook extends Piece {
 			if (B.getCell(fromRow, toCol).getPiece() == null) {
 				B.getCell(fromRow, toCol).setValidCell();
 			} else {
-				if (!B.getCell(fromRow, toCol).getPiece().getColor()
-						.equals(B.getCell(fromRow, fromCol).getPiece().getColor())) {
+				if (B.getCell(fromRow, toCol).getPiece().isWhite() != B.getCell(fromRow, fromCol).getPiece().isWhite()) {
 					B.getCell(fromRow, toCol).setValidCell();
 					break;
 				} else {
@@ -95,8 +92,7 @@ public class Rook extends Piece {
 			if (B.getCell(fromRow, toCol).getPiece() == null) {
 				B.getCell(fromRow, toCol).setValidCell();
 			} else {
-				if (!B.getCell(fromRow, toCol).getPiece().getColor()
-						.equals(B.getCell(fromRow, fromCol).getPiece().getColor())) {
+				if (B.getCell(fromRow, toCol).getPiece().isWhite() != B.getCell(fromRow, fromCol).getPiece().isWhite()) {
 					B.getCell(fromRow, toCol).setValidCell();
 					break;
 				} else {
