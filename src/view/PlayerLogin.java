@@ -11,7 +11,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class PlayerInputNew extends Stage {
+public class PlayerLogin extends Stage {
 	
 	public Button getOkButton() {
 		return okButton;
@@ -41,7 +41,7 @@ public class PlayerInputNew extends Stage {
 		return inputPassword;
 	}
 
-	Button okButton = new Button("Add");
+	Button okButton = new Button("Ok");
 	Button cancelButton = new Button("Cancel");
 	Button clearButton = new Button("Clear");
 	Label instruct1 = new Label("USERNAME:") {
@@ -57,7 +57,7 @@ public class PlayerInputNew extends Stage {
 	};
 	PasswordField inputPassword = new PasswordField();
 
-	public PlayerInputNew() {
+	public PlayerLogin() {
 
 		HBox root = new HBox(10);
 		VBox panel1 = new VBox(5);
@@ -110,9 +110,8 @@ public class PlayerInputNew extends Stage {
 		});
 		
 		this.initModality(Modality.APPLICATION_MODAL);
-		this.setTitle("Add Player");
+		this.setTitle("Login");
 		this.show();
 
 	}
-
 }

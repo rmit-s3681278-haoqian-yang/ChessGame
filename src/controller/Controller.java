@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.beans.binding.BooleanBinding;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.geometry.Pos;
@@ -14,7 +15,6 @@ import view.*;
 import java.util.ArrayList;
 import java.util.Optional;
 
-@SuppressWarnings("unused")
 public class Controller {
 
 	private Table table = new Table();
@@ -25,7 +25,6 @@ public class Controller {
 	private LeftPanel leftPanel = new LeftPanel();
 	private RightPanel rightPanel = new RightPanel();
 	private TilePane[][] tilePanes = new TilePane[6][6];
-	private SetTurns setTurns = new SetTurns();
 
 	private Piece selectPiece = null;
 	private boolean isWhitePlayerTurn;
@@ -52,6 +51,19 @@ public class Controller {
 	private Image background;
 
 	private SelectSplitPiece SplitePanel;
+	
+	private BooleanBinding startButton = new BooleanBinding() {
+
+		{
+			super.bind(table.getWhiteProperty(), table.getBlackProperty());
+		}
+
+		@Override
+		protected boolean computeValue() {
+			return (table.getWhiteProperty().get() == null || table.getBlackProperty().get() == null);
+		}
+
+	};
 
 	@SuppressWarnings("unchecked")
 	public Controller() {
@@ -72,9 +84,6 @@ public class Controller {
 		ImageView fit2 = new ImageView(banner1);
 		rightPanel.getRemainingTurns().setText(String.valueOf(Counts));
 
-		// mainFrame.setTop(fit1);
-		// fit1.setFitHeight(100);
-
 		HBox OnTopEmpty = new HBox();
 		HBox OnBottomEmpty = new HBox();
 
@@ -89,27 +98,11 @@ public class Controller {
 		frame2.getChildren().addAll(leftPanel, boardPanel, rightPanel);
 		frame2.setAlignment(Pos.CENTER);
 		frame2.setSpacing(60);
-		// mainFrame.setBottom(fit2);
-		// fit2.setFitHeight(100);
 
 		frame2.setStyle("-fx-background-image:url(/pic/Background3.jpg)");
 		leftPanel.setAlignment(Pos.CENTER);
 		boardPanel.setAlignment(Pos.CENTER);
 		rightPanel.setAlignment(Pos.CENTER);
-
-//		inputPlayer1.setTitle("Add...");
-//
-//		inputPlayer1.getInstruct1().setText("Set Username:");
-//		inputPlayer1.getInstruct2().setText("Set Password:");
-//
-//		inputPlayer2.getOkButton().setText("Login");
-//		inputPlayer2.setTitle("Login...");
-//		inputPlayer2.getInstruct1().setText("Input Username:");
-//		inputPlayer2.getInstruct2().setText("Input Password:");
-//		inputPlayer3.setTitle("Login...");
-//		inputPlayer3.getOkButton().setText("Login");
-//		inputPlayer3.getInstruct1().setText("Input Username:");
-//		inputPlayer3.getInstruct2().setText("Input Password:");
 
 		leftPanel.getAddNewPlayerButton().setOnAction(event -> {
 			new PlayerInputNew() {
@@ -131,101 +124,99 @@ public class Controller {
 			};
 		});
 
-//		inputPlayer2.getOkButton().setOnAction((eee) -> {
-//			String name = inputPlayer2.getInputUsername().getText();
-//			String pass = inputPlayer2.getInputPassword().getText();
-//
-//			System.out.println(name + ";" + pass);
-//
-//			if (table.MatchLogin(name, pass) && table.login(name, pass) != null) {
-//				if (!table.LoginPlayerBlack(table.login(name, pass))) {
-//					Alert a3 = new Alert(Alert.AlertType.ERROR);
-//					a3.setContentText("Same Id has logged in!");
-//				}
-//			} else {
-//				Alert a1 = new Alert(Alert.AlertType.ERROR);
-//				a1.setContentText("Error, try again!");
-//				a1.showAndWait();
-//			}
-//
-//		});
-//
-//		leftPanel.getLoginPlayerBlackButton().setOnAction((e2) -> {
-//
-//			inputPlayer2.showAndWait();
-//
-//		});
-//
-//		leftPanel.getLoginPlayerWhiteButton().setOnAction((e3) -> {
-//
-//			inputPlayer3.getOkButton().setOnAction((eee) -> {
-//				String name = inputPlayer3.getInputUsername().getText();
-//				String pass = inputPlayer3.getInputPassword().getText();
-//
-//				if (table.MatchLogin(name, pass) && table.login(name, pass) != null) {
-//					if (!table.LoginPlayerWhite(table.login(name, pass))) {
-//
-//						Alert a3 = new Alert(Alert.AlertType.ERROR);
-//						a3.setContentText("Same Id has logged in!");
-//					} else {
-//						inputPlayer3.close();
-//					}
-//				} else {
-//					Alert a1 = new Alert(Alert.AlertType.ERROR);
-//					a1.setContentText("Error, try again!");
-//					a1.showAndWait();
-//				}
-//
-//			});
-//			inputPlayer3.showAndWait();
-//		});
-//
-//		inputPlayer3.getOkButton().setOnAction((e4) -> {
-//
-//			setStartButtonStatus();///////////////////////////////////////////////////
-//			table.setPlayersReady();/////////////////////////////////////////////// test
-//
-//		});
-
-		setTurns.getOkButton().setOnAction((rel) -> {
-
-			int a = Integer.parseInt(setTurns.getInputTurns().getText());
-
-			if (a <= 0) {
-				Alert a33 = new Alert(Alert.AlertType.ERROR);
-				a33.setContentText("Please input a valid value!");
-				a33.showAndWait();
-			} else {
-				setCounts = a;
-				Counts = a;
-				rightPanel.getRemainingTurns().setText(String.valueOf(a));
-				setTurns.close();
-
-			}
-
-		});
-		leftPanel.getSetGameTurnsButton().setOnAction((e5) -> {
-
-			setTurns.showAndWait();
-
+		leftPanel.getLoginPlayerBlackButton().setOnAction(event -> {
+			new PlayerLogin() {
+				{
+					getOkButton().setOnAction(event -> {
+						String name = getInputUsername().getText();
+						String pass = getInputPassword().getText();
+						if (table.playerCheck(name)) {
+							if (table.passCheck(name, pass)) {
+								if (!table.checkPlayerBlack(table.login(name, pass))) {
+									Alert a = new Alert(Alert.AlertType.ERROR);
+									a.setContentText("Same player has logged in!");
+									a.showAndWait();
+								} else {
+									close();
+								}
+							} else {
+								Alert a = new Alert(Alert.AlertType.ERROR);
+								a.setContentText("Wrong password!");
+								a.showAndWait();
+							}
+						} else {
+							Alert a = new Alert(Alert.AlertType.ERROR);
+							a.setContentText("Player not registered!");
+							a.showAndWait();
+						}
+					});
+				}
+			};
 		});
 
-		leftPanel.getStartButton().setOnAction((e6) -> {
+		leftPanel.getLoginPlayerWhiteButton().setOnAction(event -> {
+			new PlayerLogin() {
+				{
+					getOkButton().setOnAction(event -> {
+						String name = getInputUsername().getText();
+						String pass = getInputPassword().getText();
+						if (table.playerCheck(name)) {
+							if (table.passCheck(name, pass)) {
+								if (!table.checkPlayerWhite(table.login(name, pass))) {
+									Alert a = new Alert(Alert.AlertType.ERROR);
+									a.setContentText("Same player has logged in!");
+									a.showAndWait();
+								} else {
+									close();
+								}
+							} else {
+								Alert a = new Alert(Alert.AlertType.ERROR);
+								a.setContentText("Wrong password!");
+								a.showAndWait();
+							}
+						} else {
+							Alert a = new Alert(Alert.AlertType.ERROR);
+							a.setContentText("Player not registered!");
+							a.showAndWait();
+						}
+					});
+				}
+			};
+		});
+
+		leftPanel.getSetGameTurnsButton().setOnAction(event -> {
+			new SetTurns() {
+				{
+					getOkButton().setOnAction((rel) -> {
+
+						if (!getInputTurns().getText().isEmpty()) {
+							int a = Integer.parseInt(getInputTurns().getText());
+							if (a <= 0) {
+								Alert a33 = new Alert(Alert.AlertType.ERROR);
+								a33.setContentText("Please input a valid value!");
+								a33.showAndWait();
+							} else {
+								setCounts = a;
+								Counts = a;
+								rightPanel.getRemainingTurns().setText(String.valueOf(a));
+								close();
+							}
+						} else {
+							Alert a33 = new Alert(Alert.AlertType.ERROR);
+							a33.setContentText("Please input a valid value!");
+							a33.showAndWait();
+						}
+					});
+				}
+			};
+		});
+
+		leftPanel.getStartButton().disableProperty().bind(startButton);
+		
+		leftPanel.getStartButton().setOnAction(event -> {
 
 			initStartXYandEndXY();
 			initGame();
-			// Counts = setCounts;
-			// rightPanel.getRemainingTurns().setText(String.valueOf(Counts));
-			// selectPiece = null;
-			// ClearBoardPanel();
-			// boardPanel.RepaintBoard();
-			// boardPanel.setDisable(false);
-			//
-			// table.setUpBoard();
-			// table.getBoard().setUpGame();
-			// paintAllIconInBoardPanel();
-			// rightPanel.getScoreOfWhite().setText("0");
-			// rightPanel.getScoreOfBlack().setText("0");
 
 		});
 
@@ -386,20 +377,6 @@ public class Controller {
 		}
 	}
 
-	// private void DisableSplit(){
-	//
-	// ////
-	// rightPanel.getSplit().setDisable(true);
-	//
-	// ///
-	// }
-	//
-	// private void EnableSplit(){
-	// ///
-	// rightPanel.getSplit().setDisable(false);
-	// /////
-	// }
-
 	public void PaintValidTilesFor(int x, int y) {
 
 		Tile temp = table.getBoard().getTileAt(x, y);
@@ -441,10 +418,6 @@ public class Controller {
 		rightPanel.getScoreOfBlack().setText("0");
 		SelectSplitPiece splitPanel;
 
-	}
-
-	private boolean setWhoActsFirst(boolean whitefirst) {
-		return whitefirst;
 	}
 
 	private void updateRemainTurns() {
@@ -501,7 +474,7 @@ public class Controller {
 	public TilePane[][] getTilePanes() {
 		return tilePanes;
 	}
-
+	
 	private void setStartButtonStatus() {
 		if (table.isPlayersReady() == false) {
 			leftPanel.getStartButton().setDisable(true);

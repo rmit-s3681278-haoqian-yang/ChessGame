@@ -4,11 +4,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
+
 public class Table {
 
 	private Board board;
-	private Player PlayerWhite = null;
-	private Player PlayerBlack = null;
+	private ObjectProperty<Player> PlayerWhite = new SimpleObjectProperty<>(null);
+	private ObjectProperty<Player> PlayerBlack = new SimpleObjectProperty<>(null);
 	private boolean isPlayersReady = false;
 
 	private Map<String, Player> players;
@@ -22,19 +25,19 @@ public class Table {
 		checkAndSetReady();
 		if (isPlayersReady) {
 
-			board = new Board(PlayerWhite, PlayerBlack);
+			board = new Board(PlayerWhite.get(), PlayerBlack.get());
 		}
 
 	}
 
 	public void setUpBoard() {
-		board = new Board(PlayerWhite, PlayerBlack);
+		board = new Board(PlayerWhite.get(), PlayerBlack.get());
 	}
 
 	public void checkAndSetReady() {
 
-		boolean k = PlayerWhite.getUsername().equals(PlayerBlack.getUsername());
-		if (PlayerWhite != null && PlayerBlack != null && !k) {
+		boolean k = PlayerWhite.get().getUsername().equals(PlayerBlack.get().getUsername());
+		if (PlayerWhite.get() != null && PlayerBlack.get() != null && !k) {
 			isPlayersReady = true;
 
 		} else {
@@ -85,7 +88,15 @@ public class Table {
 		return s;
 	}
 
-	public boolean MatchLogin(String name, String pass) {
+	public boolean playerCheck(String name) {
+		if (players.isEmpty() || !players.containsKey(name)) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+	
+	public boolean passCheck(String name, String pass) {
 		if (players.get(name).isPasswordMatch(pass)) { // Password match
 			return true;
 		} else {
@@ -101,24 +112,24 @@ public class Table {
 		}
 	}
 
-	public boolean LoginPlayerWhite(Player P) {
-		if (PlayerBlack == null) {
-			PlayerWhite = P;
+	public boolean checkPlayerWhite(Player P) {
+		if (PlayerBlack.get() == null) {
+			PlayerWhite.set(P);;
 			return true;
-		} else if (!(P.getUsername()).equals(PlayerBlack.getUsername())) {
-			PlayerWhite = P;
+		} else if (!(P.getUsername()).equals(PlayerBlack.get().getUsername())) {
+			PlayerWhite.set(P);;
 			return true;
 		} else {
 			return false;
 		}
 	}
 
-	public boolean LoginPlayerBlack(Player P) {
-		if (PlayerWhite == null) {
-			PlayerBlack = P;
+	public boolean checkPlayerBlack(Player P) {
+		if (PlayerWhite.get() == null) {
+			PlayerBlack.set(P);
 			return true;
-		} else if (!(P.getUsername()).equals(PlayerWhite.getUsername())) {
-			PlayerBlack = P;
+		} else if (!(P.getUsername()).equals(PlayerWhite.get().getUsername())) {
+			PlayerBlack.set(P);;
 			return true;
 		} else {
 			return false;
@@ -141,20 +152,21 @@ public class Table {
 		this.board = board;
 	}
 
-	public Player getPlayerWhite() {
+	
+	public ObjectProperty<Player> getWhiteProperty() {
 		return PlayerWhite;
 	}
 
 	public void setPlayerWhite(Player playerWhite) {
-		PlayerWhite = playerWhite;
+		PlayerWhite.set(playerWhite);;
 	}
 
-	public Player getPlayerBlack() {
+	public ObjectProperty<Player> getBlackProperty() {
 		return PlayerBlack;
 	}
 
 	public void setPlayerBlack(Player playerBlack) {
-		PlayerBlack = playerBlack;
+		PlayerBlack.set(playerBlack);
 	}
 
 	public Map<String, Player> getPlayerMap() {

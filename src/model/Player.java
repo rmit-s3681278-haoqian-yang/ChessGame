@@ -14,6 +14,10 @@ public class Player {
 	public String getUsername() {
 		return Username;
 	}
+	
+	public String getPassword() {
+		return Password;
+	}
 
 	public void setUsername(String username) {
 		Username = username;
@@ -23,10 +27,10 @@ public class Player {
 		Password = password;
 	}
 
-	public boolean isPasswordMatch(String str) {
+	public boolean isPasswordMatch(String pass) {
 		boolean k = false;
 
-		if (Password != null && Password.equals(str)) {
+		if (Password != null && Password.equals(pass)) {
 			k = true;
 		}
 

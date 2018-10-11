@@ -1,5 +1,6 @@
 package view;
 
+import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -43,7 +44,7 @@ public class QuitConfirm extends Stage {
 		button2.setText("Yes");
 		button2.setMinSize(100, 40);
 		button2.setMaxSize(100, 40);
-		button2.setOnAction(e -> System.exit(0));
+		button2.setOnAction(e -> Platform.exit());
 
 		button1.setStyle(
 				"-fx-border-color:#e2e2e2; -fx-border-width:2; -fx-background-radius:0;-fx-background-color:#1d1d1d;-fx-font-size:13pt;-fx-text-fill:#d8d8d8;");

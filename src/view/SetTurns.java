@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class SetTurns extends Stage {
@@ -22,17 +23,6 @@ public class SetTurns extends Stage {
 	private String text;
 
 	public SetTurns() {
-
-		this.getInputTurns().textProperty().addListener(new ChangeListener<String>() {
-			@Override
-			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-				if (newValue.matches("\\d*")) {
-					int value = Integer.parseInt(newValue);
-				} else {
-					setText(oldValue);
-				}
-			}
-		});
 
 		HBox topFit = new HBox();
 		VBox frame = new VBox();
@@ -64,7 +54,7 @@ public class SetTurns extends Stage {
 		});
 		
 		this.cancelButton.setOnAction(event -> {
-			
+			this.close();
 		});
 		
 		frame.setSpacing(30);
@@ -73,6 +63,10 @@ public class SetTurns extends Stage {
 
 		this.setMinHeight(260);
 		this.setMinWidth(400);
+		
+		this.initModality(Modality.APPLICATION_MODAL);
+		this.show();
+		
 	}
 
 	public Button getOkButton() {

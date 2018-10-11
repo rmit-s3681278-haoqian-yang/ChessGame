@@ -18,8 +18,8 @@ public class PieceTest {
     @BeforeEach
     public void setUp() {
 
-        table.LoginPlayerWhite(P1);
-        table.LoginPlayerBlack(P2);
+        table.checkPlayerWhite(P1);
+        table.checkPlayerBlack(P2);
 
         table.checkAndSetReady();
         boolean ready = table.isPlayersReady();
